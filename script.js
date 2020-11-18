@@ -15,7 +15,7 @@ console.log(cars);
 
 // 3. array1.every(currentValue, index, array1) method in javascript, It returns true or false.
 
-let ages = [23, 24, 20, 25, 26];
+let ages = [23, 24, 20, 25, 26, 100, 200, 35];
 let vowels = ['a','e','i','o','u','A','E','I','O','U'];
 let survey = [
 	{name:"Surya",anser:"Yes"},
@@ -139,6 +139,78 @@ Array.prototype.myUcase = function() {
 		this[i] = this[i].toUpperCase();
 	}
 }
+Array.prototype.myLcase = function() {
+	for (i = 0; i < this.length; i++) {
+		this[i] = this[i].toLowerCase();
+	}
+}
 
 cars.myUcase();
 console.log(cars);
+cars.myLcase();
+console.log(cars);
+
+// 21. array.push(item1, item2, item3, ......., itemX) method add element to the last of the array;
+cars.push('mercedese','rolls roice');
+console.log(cars);
+
+// 22. array.reduce(function(total, item, index, arr){}) method reduces array to a single value (Left To Right).
+function sum(total, item){
+	return total+item;
+}
+console.log(ages.reduce(sum));
+
+// 22. array.reduceRight(function(total, item, index, arr){}) method reduces array to a single value (Right To Left).
+console.log(ages.reduceRight(sum));
+
+
+// 23. array.reverse() reverse the order of element in array.
+console.log(cars);
+cars.reverse();
+console.log(cars);
+
+// 24. array.shift() method remove first item from array.
+let item = cars.shift();
+console.log(item);
+console.log(cars);
+
+// 25. slice() method is used to select items in array but not remove from original array.
+let somecars = cars.slice(1,5);
+console.log(somecars);
+somecars = cars.slice(-5,-1);
+console.log(somecars);
+
+// 26. array.some(function(item, index, arr)) return if any element matches condition;
+console.log(ages.some(checkAdult));
+
+// 27. array.sort() method sort array in ASC or DESC order but for numbers it produces wrong output So use compare function.
+console.log(ages.sort(function(x,y){ 
+	return x-y; // Ascending Order
+}));
+console.log(ages.sort(function(x,y){
+	return y-x; // Descending Order
+}));
+
+// 28. array.splice(index, howmany, item1, item2, ......, itemX) method add/remove element from array.
+console.log(cars);
+cars.splice(2,0,'range rover','safari'); // Add item at index 2.
+console.log(cars);
+somecars = cars.splice(2,1,'aventador'); // remove 1 element from index 2 and add 1 element.
+console.log(somecars);
+console.log(cars);
+somecars = cars.splice(2,4); // remove 4 element from 2nd position.
+console.log(somecars);
+console.log(cars);
+
+// 29. array.toString() method convert an array to string.
+console.log(cars.toString());
+
+// 30. array.unshift(item1, item2, item3, ... , itemX) method add new element at beginning.
+somecars.forEach(function(item, index) {
+	cars.unshift(item);
+});
+console.log(cars);
+
+// 31. array.valueOf() method return same array.
+somecars = cars.valueOf();
+console.log(somecars);
